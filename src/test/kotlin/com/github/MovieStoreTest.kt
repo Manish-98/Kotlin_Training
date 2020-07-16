@@ -49,4 +49,13 @@ class MovieStoreTest {
 
         movieStore.movieHasActress(actress) shouldBe expectedMovies
     }
+
+    @Test
+    fun `test data read correctly from csv file`() {
+        val movieStore = MovieStore()
+        val expectedList = listOf(listOf("title","releaseDate","actors","actresses","collectionInCrore","genres","imdbID","director","duration"),
+                listOf("3 Idiots","2009/12/25","Amir Khan|Sanjay Dutt","Kareena Kapoor","326","Comedy|Drama","tt1187043","Raju Hirani","170"))
+
+        movieStore.readCSVFile("/Users/manish/IdeaProjects/kotlin-hello-world/src/main/resources/MovieTest.csv") shouldBe expectedList
+    }
 }

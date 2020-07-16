@@ -1,5 +1,7 @@
 package com.github
 
+import com.github.doyaaaaaken.kotlincsv.dsl.csvReader
+import java.io.File
 import java.time.LocalDate
 
 data class Movie(val imdbId: String, val title: String, val releaseDate: LocalDate, val genres: List<String>,
@@ -28,6 +30,8 @@ class MovieStore() {
     ("Genre 5", "Genre 3"), "Director3", listOf("Actor 2", "Actor 3", "Actor 4"), listOf("Actress 4"),125)
 
     var movies: List<Movie> = listOf(movieOne, movieTwo, movieThree, movieFour, movieFive)
+
+    fun readCSVFile(fileName: String) : List<List<String>> = csvReader().readAll(File(fileName))
 
     fun movieReleasedInYear(year: Int) : List<Movie> = movies.filter {
             it.releaseDate.year == year
