@@ -7,44 +7,68 @@ import java.time.LocalDate
 class MovieStoreTest {
 
     @Test
-    fun `test movies released in year 2018 are returned`() {
+    fun `test movies released in year 2009 are returned`() {
         val movieStore = MovieStore()
-        val movie = Movie("tt0000005", "movie5", LocalDate.of(2018, 3, 29), listOf
-        ("Genre 5", "Genre 3"), "Director3", listOf("Actor 2", "Actor 3", "Actor 4"), listOf("Actress 4"),125)
-        val year = 2018
+        val movie = Movie(title = "3 Idiots",
+                releaseDate = LocalDate.of(2009, 12, 25),
+                actors = listOf("Amir Khan", "Sanjay Dutt"),
+                actresses = listOf("Kareena Kapoor"),
+                genres = listOf("Comedy", "Drama"),
+                imdbId = "tt1187043",
+                director = "Raju Hirani",
+                duration = 170)
+        val year = 2009
         val expectedMovies = listOf(movie)
 
         movieStore.movieReleasedInYear(year) shouldBe expectedMovies
     }
 
     @Test
-    fun `test movies with duration higher than 140 returned`() {
+    fun `test movies with duration higher than 200 returned`() {
         val movieStore = MovieStore()
-        val movie = Movie("tt0000004", "movie4", LocalDate.of(2020, 2, 29), listOf
-        ("Genre 1", "Genre 3"), "Director3", listOf("Actor 2"), listOf("Actress 1"),150)
-        val duration = 140
+        val movie = Movie(title = "Sholay",
+                releaseDate = LocalDate.of(1975, 8, 15),
+                actors = listOf("Dharmendra", "Amithab"),
+                actresses = listOf("Java Bhadhri", "Hema Malini"),
+                genres = listOf("Action"),
+                imdbId = "tt0073707",
+                director = "Hema Malini",
+                duration = 210)
+        val duration = 200
         val expectedMovies = listOf(movie)
 
         movieStore.movieDurationHigherThan(duration) shouldBe expectedMovies
     }
 
     @Test
-    fun `test movies with Actor 4 returned`() {
+    fun `test movies with Actor Dharmendra returned`() {
         val movieStore = MovieStore()
-        val movie = Movie("tt0000005", "movie5", LocalDate.of(2018, 3, 29), listOf
-        ("Genre 5", "Genre 3"), "Director3", listOf("Actor 2", "Actor 3", "Actor 4"), listOf("Actress 4"),125)
-        val actor = "Actor 4"
+        val movie = Movie(title = "Sholay",
+                releaseDate = LocalDate.of(1975, 8, 15),
+                actors = listOf("Dharmendra", "Amithab"),
+                actresses = listOf("Java Bhadhri", "Hema Malini"),
+                genres = listOf("Action"),
+                imdbId = "tt0073707",
+                director = "Hema Malini",
+                duration = 210)
+        val actor = "Dharmendra"
         val expectedMovies = listOf(movie)
 
         movieStore.movieHasActor(actor) shouldBe expectedMovies
     }
 
     @Test
-    fun `test movies with Actress 4 returned`() {
+    fun `test movies with Actress Hema Malini returned`() {
         val movieStore = MovieStore()
-        val movie = Movie("tt0000005", "movie5", LocalDate.of(2018, 3, 29), listOf
-        ("Genre 5", "Genre 3"), "Director3", listOf("Actor 2", "Actor 3", "Actor 4"), listOf("Actress 4"),125)
-        val actress = "Actress 4"
+        val movie = Movie(title = "Sholay",
+                releaseDate = LocalDate.of(1975, 8, 15),
+                actors = listOf("Dharmendra", "Amithab"),
+                actresses = listOf("Java Bhadhri", "Hema Malini"),
+                genres = listOf("Action"),
+                imdbId = "tt0073707",
+                director = "Hema Malini",
+                duration = 210)
+        val actress = "Hema Malini"
         val expectedMovies = listOf(movie)
 
         movieStore.movieHasActress(actress) shouldBe expectedMovies
