@@ -61,11 +61,3 @@ class MovieStore() {
             it.actresses.contains(actress)
         }
 }
-
-fun main() {
-    val movieStore = MovieStore()
-    println(movieStore.movieDurationHigherThan(100))
-    println(movieStore.movieHasActor("Actor 1"))
-    println(movieStore.movieHasActress("Actress 1"))
-    println(movieStore.movieReleasedInYear(2020))
-}
