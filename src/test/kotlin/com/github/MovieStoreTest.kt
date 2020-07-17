@@ -100,4 +100,19 @@ class MovieStoreTest {
 
         movieStore.convertToObjectList(listOfLists) shouldBe expectedList
     }
+
+    @Test
+    fun `should return whether movie is present in the MovieStore`() {
+        val movieStore = MovieStore()
+        val movie = Movie(title = "3 Idiots",
+                releaseDate = LocalDate.of(2009, 12, 25),
+                actors = listOf("Amir Khan", "Sanjay Dutt"),
+                actresses = listOf("Kareena Kapoor"),
+                genres = listOf(Genre.COMEDY, Genre.DRAMA),
+                imdbId = "tt1187043",
+                director = "Raju Hirani",
+                duration = 170)
+
+        (movie in movieStore) shouldBe true
+    }
 }

@@ -24,10 +24,6 @@ enum class Genre(genre: String) {
 data class Movie(val imdbId: String, val title: String, val releaseDate: LocalDate, val genres: List<Genre>,
                  val director: String, val actors: List<String>, val actresses: List<String>, val duration: Int) {
 
-    override fun toString(): String {
-        return "Movie(imdbId='$imdbId', title='$title', releaseDate=$releaseDate, genres=$genres, director='$director', actors=$actors, actresses=$actresses, duration=$duration)"
-    }
-
     companion object {
         fun toMovie(movieString: List<String>) : Movie {
             val formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd")
@@ -45,7 +41,7 @@ data class Movie(val imdbId: String, val title: String, val releaseDate: LocalDa
     }
 }
 
-class MovieStore() {
+class MovieStore {
 
     val movies: List<Movie>
 
@@ -81,4 +77,6 @@ class MovieStore() {
     fun movieHasActress(actress: String): List<Movie> = movies.filter {
         it.actresses.contains(actress)
     }
+
+    operator fun contains(movie : Movie) : Boolean = this.movies.contains(movie)
 }
