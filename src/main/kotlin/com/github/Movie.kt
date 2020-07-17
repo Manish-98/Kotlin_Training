@@ -25,17 +25,17 @@ data class Movie(val imdbId: String, val title: String, val releaseDate: LocalDa
                  val director: String, val actors: List<String>, val actresses: List<String>, val duration: Int) {
 
     companion object {
-        fun toMovie(movieString: List<String>) : Movie {
+        fun toMovie(movieDetails: List<String>) : Movie {
             val formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd")
             return Movie(
-                    title = movieString[0],
-                    releaseDate = LocalDate.parse(movieString[1], formatter),
-                    actors = movieString[2].split("|"),
-                    actresses = movieString[3].split("|"),
-                    genres = Genre.getListOfGenres(movieString[5].split("|")),
-                    imdbId = movieString[6],
-                    director = movieString[7],
-                    duration = Integer.parseInt(movieString[8])
+                    title = movieDetails[0],
+                    releaseDate = LocalDate.parse(movieDetails[1], formatter),
+                    actors = movieDetails[2].split("|"),
+                    actresses = movieDetails[3].split("|"),
+                    genres = Genre.getListOfGenres(movieDetails[5].split("|")),
+                    imdbId = movieDetails[6],
+                    director = movieDetails[7],
+                    duration = Integer.parseInt(movieDetails[8])
             )
         }
     }
