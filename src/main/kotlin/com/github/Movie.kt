@@ -79,4 +79,11 @@ class MovieStore {
     }
 
     operator fun contains(movie : Movie) : Boolean = this.movies.contains(movie)
+    operator fun get(imdbId: String): Movie? {
+        for (movie in movies) {
+            if (movie.imdbId.equals(imdbId))
+                return movie
+        }
+        return null
+    }
 }

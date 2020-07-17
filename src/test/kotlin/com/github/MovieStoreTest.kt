@@ -115,4 +115,19 @@ class MovieStoreTest {
 
         (movie in movieStore) shouldBe true
     }
+
+    @Test
+    fun `should return movie indexed according to imdb id`() {
+        val movieStore = MovieStore()
+        val movie = Movie(title = "3 Idiots",
+                releaseDate = LocalDate.of(2009, 12, 25),
+                actors = listOf("Amir Khan", "Sanjay Dutt"),
+                actresses = listOf("Kareena Kapoor"),
+                genres = listOf(Genre.COMEDY, Genre.DRAMA),
+                imdbId = "tt1187043",
+                director = "Raju Hirani",
+                duration = 170)
+
+        movieStore["tt1187043"] shouldBe movie
+    }
 }
