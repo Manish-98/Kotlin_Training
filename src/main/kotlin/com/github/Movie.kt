@@ -27,6 +27,22 @@ data class Movie(val imdbId: String, val title: String, val releaseDate: LocalDa
     override fun toString(): String {
         return "Movie(imdbId='$imdbId', title='$title', releaseDate=$releaseDate, genres=$genres, director='$director', actors=$actors, actresses=$actresses, duration=$duration)"
     }
+
+    companion object {
+        fun toMovie(movieString: List<String>) : Movie {
+            val formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd")
+            return Movie(
+                    title = movieString[0],
+                    releaseDate = LocalDate.parse(movieString[1], formatter),
+                    actors = movieString[2].split("|"),
+                    actresses = movieString[3].split("|"),
+                    genres = Genre.getListOfGenres(movieString[5].split("|")),
+                    imdbId = movieString[6],
+                    director = movieString[7],
+                    duration = Integer.parseInt(movieString[8])
+            )
+        }
+    }
 }
 
 class MovieStore() {
@@ -43,22 +59,10 @@ class MovieStore() {
 
     fun convertToObjectList(movieList: List<List<String>>): List<Movie> {
         val movies = mutableListOf<Movie>()
-        val formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd")
 
         for (row in movieList.subList(1, movieList.size)) {
-
-            movies.add(Movie(
-                    title = row[0],
-                    releaseDate = LocalDate.parse(row[1], formatter),
-                    actors = row[2].split("|"),
-                    actresses = row[3].split("|"),
-                    genres = Genre.getListOfGenres(row[5].split("|")),
-                    imdbId = row[6],
-                    director = row[7],
-                    duration = Integer.parseInt(row[8])
-            ))
+            movies.add(Movie.toMovie(row))
         }
-
         return movies
     }
 
