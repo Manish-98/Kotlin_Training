@@ -13,7 +13,7 @@ class MovieStoreTest {
                 releaseDate = LocalDate.of(2009, 12, 25),
                 actors = listOf("Amir Khan", "Sanjay Dutt"),
                 actresses = listOf("Kareena Kapoor"),
-                genres = listOf("Comedy", "Drama"),
+                genres = listOf(Genre.COMEDY, Genre.DRAMA),
                 imdbId = "tt1187043",
                 director = "Raju Hirani",
                 duration = 170)
@@ -30,7 +30,7 @@ class MovieStoreTest {
                 releaseDate = LocalDate.of(1975, 8, 15),
                 actors = listOf("Dharmendra", "Amithab"),
                 actresses = listOf("Java Bhadhri", "Hema Malini"),
-                genres = listOf("Action"),
+                genres = listOf(Genre.ACTION),
                 imdbId = "tt0073707",
                 director = "Hema Malini",
                 duration = 210)
@@ -47,7 +47,7 @@ class MovieStoreTest {
                 releaseDate = LocalDate.of(1975, 8, 15),
                 actors = listOf("Dharmendra", "Amithab"),
                 actresses = listOf("Java Bhadhri", "Hema Malini"),
-                genres = listOf("Action"),
+                genres = listOf(Genre.ACTION),
                 imdbId = "tt0073707",
                 director = "Hema Malini",
                 duration = 210)
@@ -64,7 +64,7 @@ class MovieStoreTest {
                 releaseDate = LocalDate.of(1975, 8, 15),
                 actors = listOf("Dharmendra", "Amithab"),
                 actresses = listOf("Java Bhadhri", "Hema Malini"),
-                genres = listOf("Action"),
+                genres = listOf(Genre.ACTION),
                 imdbId = "tt0073707",
                 director = "Hema Malini",
                 duration = 210)
@@ -93,7 +93,7 @@ class MovieStoreTest {
                     releaseDate = LocalDate.of(2009, 12, 25),
                     actors = listOf("Amir Khan", "Sanjay Dutt"),
                     actresses = listOf("Kareena Kapoor"),
-                    genres = listOf("Comedy", "Drama"),
+                    genres = listOf(Genre.COMEDY, Genre.DRAMA),
                     imdbId = "tt1187043",
                     director = "Raju Hirani",
                     duration = 170))
